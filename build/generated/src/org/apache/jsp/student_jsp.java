@@ -3,9 +3,11 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import controller.Student;
 import java.io.*;
 import java.util.*;
 import javax.servlet.*;
+import controller.*;
 
 public final class student_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -45,21 +47,94 @@ public final class student_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
       out.write("\n");
+      out.write("\n");
       out.write("        \n");
       out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>JSP Page</title>\\\n");
-      out.write("        <@! String display = \"hello world\"; !@>\n");
-      out.write("        <@! = display; !@>\n");
-      out.write("        \n");
+      out.write("        <title>JSP Page</title>\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("        ");
+ ArrayList MyList = new ArrayList(); 
+      out.write("\n");
+      out.write("        ");
+ String regex = "";
+      out.write(" \n");
+      out.write("\n");
       out.write("        <!-- ABC--> \n");
+      out.write("        <style>\n");
+      out.write("            .table-border tr td{\n");
+      out.write("             border : solid 1px black;   \n");
+      out.write("             \n");
+      out.write("            }\n");
+      out.write("            \n");
+      out.write("            </style>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <h1>Hello World!</h1>\n");
+      out.write("        <form name = \"input\"  action = \"StudentServlet\" method = \"post\">\n");
+      out.write("            <table>\n");
+      out.write("                <tr>\n");
+      out.write("                    <td> Number of student</td>\n");
+      out.write("                    <td> <input type = \"text\" name =\"myinput\"> </td>\n");
+      out.write("                    <td> <input type = \"submit\" name = \"mybutton\" value=\"generate\"> </td>\n");
+      out.write("                </tr>    \n");
+      out.write("            </table>                           \n");
+      out.write("        </form>\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("        <table class=\"table-border\">\n");
+      out.write("            <tr>\n");
+      out.write("                <td>ID</td>\n");
+      out.write("                <td>Name</td>\n");
+      out.write("                <td>Gender</td>\n");
+      out.write("                <td>DOB</td>        \n");
+      out.write("            </tr>\n");
+      out.write("            ");
+ String input = request.getParameter("myinput");
+                try {
+                    ArrayList<Student> newList = (ArrayList<Student>)request.getAttribute("List");
+                    for (int i = 0; i < newList.size(); i++) {
+                        //out.println(newList.get(i).getId() + " " + newList.get(i).getName() + " " + newList.get(i).getGender() + " " + newList.get(i).getDOB());
+
+      out.write("          \n");
+      out.write("            <tr> \n");
+      out.write("                <td> ");
+      out.print(newList.get(i).getId());
+      out.write(" </td>\n");
+      out.write("                <td> ");
+      out.print(newList.get(i).getName());
+      out.write(" </td>\n");
+      out.write("                <td> \n");
+      out.write("                    <input type = \"checkbox\" disabled=\"\"\n");
+      out.write("\n");
+      out.write("                           ");
+ if (newList.get(i).getGender() == true) {
+                                   out.println("checked");
+                               }
+                           
+      out.write("\n");
+      out.write("                           > \n");
+      out.write("                </td>\n");
+      out.write("                <td> ");
+      out.print(newList.get(i).fixedDate());
+      out.write(" </td>\n");
+      out.write("\n");
+      out.write("            </tr>\n");
+      out.write("            ");
+
+                    }
+
+                } catch (Exception e) {
+                    out.println("not number");
+                }
+            
+      out.write("        \n");
+      out.write("        </table>\n");
       out.write("    </body>\n");
+      out.write("</body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){

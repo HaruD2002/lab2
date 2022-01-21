@@ -26,7 +26,7 @@
             </style>
     </head>
     <body>
-        <form name = "input"  action = "student.jsp" method = "post">
+        <form name = "input"  action = "StudentServlet" method = "post">
             <table>
                 <tr>
                     <td> Number of student</td>
@@ -46,9 +46,7 @@
             </tr>
             <% String input = request.getParameter("myinput");
                 try {
-                    int taken = Integer.parseInt(input);
-                    ArrayList<Student> newList = Student.generate(taken);
-
+                    ArrayList<Student> newList = (ArrayList<Student>)request.getAttribute("List");
                     for (int i = 0; i < newList.size(); i++) {
                         //out.println(newList.get(i).getId() + " " + newList.get(i).getName() + " " + newList.get(i).getGender() + " " + newList.get(i).getDOB());
 %>          
