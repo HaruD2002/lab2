@@ -26,7 +26,7 @@
             </style>
     </head>
     <body>
-        <form name = "input"  action = "StudentServlet" method = "post">
+<!--        <form name = "input"  action = "StudentServlet" method = "post">
             <table>
                 <tr>
                     <td> Number of student</td>
@@ -34,7 +34,7 @@
                     <td> <input type = "submit" name = "mybutton" value="generate"> </td>
                 </tr>    
             </table>                           
-        </form>
+        </form>-->
 
 
         <table class="table-border">

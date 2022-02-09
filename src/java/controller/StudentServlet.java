@@ -38,10 +38,10 @@ public class StudentServlet extends HttpServlet {
         String c = request.getParameter("myinput");
         int input = Integer.parseInt(c);        
        
-        RequestDispatcher rd = request.getRequestDispatcher("student.jsp");
+       
         ArrayList<Student> newList = Student.generate(input);
-         request.setAttribute("List", newList);
-                   
+        request.setAttribute("List", newList);
+        RequestDispatcher rd = request.getRequestDispatcher("student.jsp");            
         rd.forward(request, response);
         
     }
